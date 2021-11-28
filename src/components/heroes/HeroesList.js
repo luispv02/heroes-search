@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroeCard from './HeroeCard'
 
-const HeroesList = ({heroes, heroname}) => {
+const HeroesList = ({heroes}) => {
   
     if(heroes === undefined) return null
 

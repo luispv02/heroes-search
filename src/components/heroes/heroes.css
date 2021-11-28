@@ -1,0 +1,21 @@
+/* SearchgByName */
+.btn-search:focus{
+    box-shadow: none !important;
+}
+
+/* HeroeCard */
+
+.fullname,
+.publisher,
+.appearance{
+    font-size: .9rem;
+}
+
+.btn-more{
+    font-size: .8rem;
+    box-shadow: none;
+}
+
+.btn-more:focus{
+    box-shadow: none !important;
+}

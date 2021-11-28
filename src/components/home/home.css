@@ -1,0 +1,11 @@
+.container-home .btn{
+    border: 1px solid black;
+    transition: all 500ms;
+}
+
+.container-home .btn:hover{
+    background: black;
+    color: white;
+    transition: all 500ms;
+    transform: scale(1.1);
+}

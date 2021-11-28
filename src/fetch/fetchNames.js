@@ -3,6 +3,8 @@ export const fetchNames = async (name = '') => {
         return []
     }
 
+    console.log(name)
+
     const key = '4583093621756334';
     const url = `https://www.superheroapi.com/api.php/${key}/search/${name}`;
 

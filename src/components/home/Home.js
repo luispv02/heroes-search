@@ -1,5 +1,5 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import './home.css'
 
 const Home = () => {
     return (
@@ -8,12 +8,12 @@ const Home = () => {
                 <h1 className="mt-3">Search your favorite heroes by Name or ID</h1>
 
                 <Link
-                    className="btn btn-info mt-5"
+                    className="btn mt-5"
                     to='/searchname'
                 >Search by Name</Link>
 
                 <Link
-                    className="btn btn-info mt-3"
+                    className="btn mt-3"
                     to='/searchid'
                 >Search by ID</Link>
             </div>
