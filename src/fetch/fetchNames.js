@@ -1,9 +1,10 @@
-export const fetchNames = async (name = '') => {
+export const fetchNames = async (name = '', setShowSpinner) => {
     if(name.trim() === ''){
         return []
     }
 
     console.log(name)
+  
 
     const key = '4583093621756334';
     const url = `https://www.superheroapi.com/api.php/${key}/search/${name}`;
@@ -11,7 +12,13 @@ export const fetchNames = async (name = '') => {
     const respuesta = await fetch(url);
     const {results} = await respuesta.json();
     
-    return results;
+    console.log(results)
+    if(results){
+        setShowSpinner(false)
+        return results
+    }
+    setShowSpinner(false)
+ 
     
 
     

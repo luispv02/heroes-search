@@ -1,12 +1,17 @@
 import React from 'react'
 import HeroeCard from './HeroeCard'
+import { motion } from "framer-motion"
 
 const HeroesList = ({heroes}) => {
   
     if(heroes === undefined) return null
 
     return (
-        <div className="row">
+        <motion.div 
+            className="row"
+            initial={{y: -100}}
+            animate={{ y: 0 }}
+        >
 
             {
                 heroes.map(heroe => (
@@ -16,7 +21,7 @@ const HeroesList = ({heroes}) => {
                     />
                 ))
             }
-        </div>
+        </motion.div>
     )
 }
 

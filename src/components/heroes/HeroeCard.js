@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './heroes.css'
+import { motion } from "framer-motion"
 
 const HeroeCard = ({ heroe }) => {
 
@@ -17,7 +18,11 @@ const HeroeCard = ({ heroe }) => {
     }
 
     return (
-        <div className="col-12 col-md-4 col-lg-3 mb-4 mx-auto">
+        <motion.div 
+            className="col-12 col-md-4 col-lg-3 mb-4 mx-auto"
+            initial={{y: -100}}
+            animate={{ y: 0 }}
+        >
             <div className="card">
                 <div className="row">
                     <div className="col-5">
@@ -45,7 +50,7 @@ const HeroeCard = ({ heroe }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

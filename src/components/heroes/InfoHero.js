@@ -1,14 +1,16 @@
 import { useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import { fetchId } from '../../fetch/fetchId';
+import { motion } from "framer-motion"
 
 const InfoHero = () => {
 
     const [hero, setHero] = useState({})
     const { heroeId } = useParams();
     const navigate = useNavigate()
-
-    useMemo(() => fetchId(heroeId).then(hero => setHero(hero)), [heroeId]);
+    const [showspinner, setShowSpinner] = useState(false)
+    
+    useMemo(() => fetchId(heroeId, setShowSpinner).then(hero => setHero(hero)), [heroeId]);
 
     if(Object.keys(hero).length === 0) return null
 
@@ -20,19 +22,30 @@ const InfoHero = () => {
 
 
     return (
-        <div className="container-info mt-5">
+        <div 
+            className="container-info mt-5"
+ 
+        >
             <div className="container">
                 <h1 className="text-center">{name}</h1>
                 <div className="card mb-3">
                     <div className="row g-0">
-                        <div className="col-12">
+                        <motion.div 
+                            className="col-12"
+                            initial={{ x: -100}}
+                            animate={{ x: 0 }}
+                        >
                             <img 
                                 src={url}
                                 className="img-fluid rounded-start" 
                                 alt={name}
                             />
-                        </div>
-                        <div className="col-12">
+                        </motion.div>
+                        <motion.div 
+                            className="col-12"
+                            initial={{ x: 100}}
+                            animate={{ x: 0 }}
+                        >
                             <div className="card-body">
                                 <h5 className="card-title text-uppercase">{name}</h5>
                                 <p className="m-0 fw-bold">Name: <span className="fw-normal"> {fullname}</span></p>
@@ -66,7 +79,7 @@ const InfoHero = () => {
                                     onClick={handleReturn}
                                 >Return</button>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

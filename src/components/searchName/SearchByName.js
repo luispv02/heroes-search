@@ -14,13 +14,14 @@ const SearchByName = () => {
 
     const [heroes, setHeroes] = useState([])
     const [error, setError] = useState(false)
+    const [showspinner, setShowSpinner] = useState(false)
 
     const [ {heroname}, handleChange ] = useForm({
         heroname: q,
     });
- 
+    
   
-    useMemo(() => fetchNames(q).then(heroes => setHeroes(heroes)), [q])
+    useMemo(() => fetchNames(q, setShowSpinner).then(heroes => setHeroes(heroes)), [q]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,10 +30,10 @@ const SearchByName = () => {
             return;
         }
         setError(false)
+        setShowSpinner(true)
         navigate(`?q=${heroname}`);
     }
-
-    console.log(heroes.length)
+  
 
     return (
         <div className="container-search-name mt-4">
@@ -66,18 +67,20 @@ const SearchByName = () => {
                     <div className="col-12 mt-4">
                         <div className="container-heroes">
 
-                            
-
                             {
-                                (q === '') 
+                                (showspinner) 
+                                ? <Spinner />
+                                : (q === '') 
                                 ? <p className="alert alert-info p-1 text-center ">Enter a name to search</p> 
                                 : (heroes === undefined) 
-                                    ? <p className="alert alert-danger p-1 text-center">No results found: <span className="fw-bold">{q}</span></p> 
+                                    ? <p className="alert alert-danger p-1 text-center">No results found: <span className="fw-bold">{q}</span></p>
                                     :<HeroesList 
                                         heroes={heroes}
                                         heroname={heroname}
                                     />
                             }
+
+                            
                             
                         </div>
                         

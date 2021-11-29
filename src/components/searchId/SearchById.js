@@ -4,20 +4,24 @@ import { fetchId } from '../../fetch/fetchId';
 import useForm from '../../hooks/useForm'
 import queryString from 'query-string'
 import HeroeCard from '../heroes/HeroeCard';
+import Spinner from '../spinner/Spinner';
 
 const SearchById = () => {
 
-    const [error, setError] = useState(false)
-    const [hero, setHero] = useState({})
     const navigate = useNavigate();
     const location = useLocation();
     const {q = ''} = queryString.parse(location.search)
+
+    const [error, setError] = useState(false)
+    const [hero, setHero] = useState({})
+    const [showspinner, setShowSpinner] = useState(false)
+    
 
     const [{heroid}, handleChange] = useForm({
         heroid: q
     });
 
-    useMemo(() => fetchId(q).then(hero => setHero(hero)), [q])
+    useMemo(() => fetchId(q, setShowSpinner).then(hero => setHero(hero)), [q])
     
 
     const handleSubmit = (e) => {
@@ -27,7 +31,7 @@ const SearchById = () => {
             return;
         }
         setError(false)
-        
+        setShowSpinner(true)
         navigate(`?q=${heroid}`)
     }
 
@@ -74,7 +78,9 @@ const SearchById = () => {
                         <div className="container-heroes">
 
                             {
-                                (q === '')
+                                (showspinner) 
+                                ? <Spinner />
+                                : (q === '')
                                 ? <p className="alert alert-info p-1 text-center ">Enter a ID to search</p> 
                                 : (hero.response === 'error')
                                     ?<p className="alert alert-danger p-1 text-center">No results found</p>
