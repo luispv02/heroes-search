@@ -10,9 +10,6 @@ export const fetchId = async(id, setShowSpinner) => {
     const respuesta = await fetch(url);
     const resultado = await respuesta.json();
     
-    if(resultado){
-        setShowSpinner(false)
-        return resultado
-    }
-    setShowSpinner(false)
+    return resultado
+
 }

@@ -19,3 +19,28 @@
 .btn-more:focus{
     box-shadow: none !important;
 }
+
+@media(min-width:768px){
+    /* card - card responsive */
+    .card{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .card-info{
+        width: 100% !important;
+    }
+
+    .card-data{
+        width: 65%;
+    }
+
+}
+
+@media(min-width:992px){
+    /* card - card responsive */
+    .card-info{
+        width: 80% !important;
+    }
+
+}

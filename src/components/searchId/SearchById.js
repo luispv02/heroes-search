@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useMemo, useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router';
 import { fetchId } from '../../fetch/fetchId';
 import useForm from '../../hooks/useForm'
@@ -12,17 +14,15 @@ const SearchById = () => {
     const location = useLocation();
     const {q = ''} = queryString.parse(location.search)
 
-    const [error, setError] = useState(false)
     const [hero, setHero] = useState({})
+    const [error, setError] = useState(false)
     const [showspinner, setShowSpinner] = useState(false)
-    
 
     const [{heroid}, handleChange] = useForm({
         heroid: q
     });
 
     useMemo(() => fetchId(q, setShowSpinner).then(hero => setHero(hero)), [q])
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,14 +35,18 @@ const SearchById = () => {
         navigate(`?q=${heroid}`)
     }
 
+    useEffect(() => {
+        setShowSpinner(!showspinner)
+    }, [hero])
+
 
 
     return (
-        <div className="container-id-name mt-4">
+        <div className="container-id-name mt-5">
             <h3 className="text-center">Search By Id</h3>
             <div className="container">
-                <div className="row">
-                    <div className="col-12">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-8">
                         {
                             error ? <p className="alert alert-danger p-1 text-center mt-4">Please, Enter a ID</p> : null
                         }
@@ -56,6 +60,7 @@ const SearchById = () => {
                                 placeholder="Hero ID"
                                 name='heroid'
                                 onChange={handleChange}
+                                value={heroid}
                             />
                             
                             
@@ -74,22 +79,20 @@ const SearchById = () => {
                         
                     </div>
 
-                    <div className="col-12 mt-4">
+                    <div className="col-12 col-md-8 mt-4">
                         <div className="container-heroes">
 
                             {
-                                (showspinner) 
-                                ? <Spinner />
-                                : (q === '')
-                                ? <p className="alert alert-info p-1 text-center ">Enter a ID to search</p> 
-                                : (hero.response === 'error')
-                                    ?<p className="alert alert-danger p-1 text-center">No results found</p>
-                                    : <HeroeCard 
+                                showspinner 
+                                ?( <Spinner />)
+                                : q === ''
+                                ? (<p className="alert alert-info p-1 text-center ">Enter a ID to search</p> )
+                                : hero.response === 'error'
+                                    ?( <p className="alert alert-danger p-1 text-center">No results found</p>)
+                                    : (<HeroeCard 
                                         heroe={hero}
-                                    />
+                                    />)
                             }
-
-                            
                         </div>
                     </div>
                 </div>

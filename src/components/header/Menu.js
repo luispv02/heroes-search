@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Menu = () => {
     return (
-        <ul className="nav flex-column">
+        <ul className="nav flex-column flex-md-row">
             <li className="nav-item my-4">
                 <NavLink 
                     className="nav-link text-white" 

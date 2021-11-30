@@ -9,3 +9,9 @@
     transition: all 500ms;
     transform: scale(1.1);
 }
+
+@media(min-width:768px){
+    .title{
+        width: 50%;
+    }
+}

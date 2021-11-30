@@ -32,3 +32,29 @@
     cursor: pointer;
     z-index: 99;
 }
+
+@media(min-width:768px){
+    /* menu/menu-responsive */
+    .menu{
+        position: initial;
+        padding-top: 0 ;
+    }
+
+    .menu .nav{
+        justify-content: end;
+    }
+
+    .menu .nav .nav-item{
+        margin: .2rem 1rem !important;
+    }
+
+    .menu .nav .nav-item .nav-link{
+        padding: .1rem .8rem;
+        font-size: 1.1rem;
+    }
+
+    /* icon */
+    .icon{
+        display: none !important;
+    }
+}

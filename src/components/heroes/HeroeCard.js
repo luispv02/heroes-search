@@ -17,6 +17,8 @@ const HeroeCard = ({ heroe }) => {
         navigate(`/info/${id}`)
     }
 
+    console.log(firstAppearance)
+
     return (
         <motion.div 
             className="col-12 col-md-4 col-lg-3 mb-4 mx-auto"
@@ -25,7 +27,7 @@ const HeroeCard = ({ heroe }) => {
         >
             <div className="card">
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-5 col-md-12">
                         {
                             (url === 404) ? null : <img 
                             src={url}
@@ -34,14 +36,18 @@ const HeroeCard = ({ heroe }) => {
                         />
                         }
                     </div>
-                    <div className="col-7">
-                        <div className="card-body p-0">
+                    <div className="col-7 col-md-12">
+                        <div className="card-body p-md-1 p-0">
                             <h5 className="card-title m-0">{name}</h5>
                             <p className="m-0 fullname">{fullName}</p>
                             <p className="m-0 publisher">{publisher}</p>
 
                             <hr className="m-0 mb-1" />
-                            <p className="card-text appearance m-0">{firstAppearance}</p>
+                            
+                            {
+                                firstAppearance === '-' ? null : <p className="card-text appearance m-0">{firstAppearance}</p>
+                            }
+
                             <button
                                 className="btn btn-primary p-1 my-1 btn-more"
                                 onClick={() => heroInfo(id)}
