@@ -20,6 +20,11 @@
     box-shadow: none !important;
 }
 
+/* infoHero */
+.return:focus{
+    box-shadow: none !important;
+}
+
 @media(min-width:768px){
     /* card - card responsive */
     .card{

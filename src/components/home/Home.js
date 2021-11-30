@@ -4,7 +4,7 @@ import './home.css'
 const Home = () => {
     return (
         <div className="container-home">
-            <div className="d-flex flex-column align-items-center text-center px-3 mt-3">
+            <div className="d-flex flex-column align-items-center text-center px-3 pt-3">
                 <h1 className="mt-3 mt-md-5 title">Search your favorite heroes by Name or ID</h1>
 
                 <Link

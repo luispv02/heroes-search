@@ -1,4 +1,7 @@
 export const fetchNames = async (name = '') => {
+
+    console.log('Buscando por nombre')
+
     if(name.trim() === ''){
         return []
     }

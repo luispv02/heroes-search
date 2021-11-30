@@ -80,7 +80,7 @@ const InfoHero = () => {
                                     <p className="fw-bold m-0">Strength: <span className="fw-normal">{strength} pts</span></p>
 
                                     <button
-                                        className="btn btn-outline-primary p-1 mt-3"
+                                        className="btn btn-outline-primary p-1 mt-3 return"
                                         onClick={handleReturn}
                                     >Return</button>
                                 </div>

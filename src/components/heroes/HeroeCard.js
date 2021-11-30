@@ -10,14 +10,12 @@ const HeroeCard = ({ heroe }) => {
         return null
     }
 
-
     const { id, name, biography: { 'first-appearance': firstAppearance, "full-name": fullName, publisher }, image: { url } } = heroe;
 
     const heroInfo = (id) => {
         navigate(`/info/${id}`)
     }
 
-    console.log(firstAppearance)
 
     return (
         <motion.div 
